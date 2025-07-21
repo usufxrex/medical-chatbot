@@ -1,0 +1,25 @@
+{
+  "disease_info": {
+    "name": "Lung Cancer",
+    "category": "oncology",
+    "description": "Analysis of lung cancer risk factors and symptoms from medical dataset"
+  },
+  "dataset_info": {
+    "total_records": 3001,
+    "source": "Medical Research Dataset",
+    "last_updated": "2024-01-15"
+  },
+  "symptoms": {
+    "primary": ["persistent_cough", "chest_pain", "shortness_of_breath"],
+    "secondary": ["fatigue", "weight_loss", "wheezing"],
+    "rare": ["yellow_fingers", "swelling_face"]
+  },
+  "risk_factors": {
+    "major": ["smoking", "age_over_50", "family_history"],
+    "minor": ["air_pollution", "radon_exposure"]
+  },
+  "data_schema": {
+    "required_columns": ["AGE", "GENDER", "SMOKING", "LUNG_CANCER"],
+    "target_column": "LUNG_CANCER"
+  }
+}

@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Background Animation -->
+<div class="medical-background">
+    <div class="floating-element pulse-1"></div>
+    <div class="floating-element pulse-2"></div>
+    <div class="floating-element pulse-3"></div>
+    <div class="floating-element dna-helix"></div>
+</div>
+
+<!-- Main App Container -->
+<div class="app-container">
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2>MediAI</h2>
+            </div>
+            <p class="tagline">Advanced Medical Intelligence</p>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="#chat" class="nav-item active" data-section="chat">
+                <i class="fas fa-comments"></i>
+                <span>AI Chat</span>
+                <div class="nav-indicator"></div>
+            </a>
+            <a href="#analytics" class="nav-item" data-section="analytics">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+                <div class="nav-indicator"></div>
+            </a>
+            <a href="#diseases" class="nav-item" data-section="diseases">
+                <i class="fas fa-virus"></i>
+                <span>Diseases</span>
+                <div class="nav-indicator"></div>
+            </a>
+            <a href="#insights" class="nav-item" data-section="insights">
+                <i class="fas fa-brain"></i>
+                <span>Insights</span>
+                <div class="nav-indicator"></div>
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="system-status" id="system-status">
+                <div class="status-dot online"></div>
+                <span>System Online</span>
+            </div>
+            <div class="dataset-info" id="dataset-summary">
+                <div class="stat">
+                    <span class="value" id="total-records">-</span>
+                    <span class="label">Records</span>
+                </div>
+                <div class="stat">
+                    <span class="value" id="ai-model">AI 2.0</span>
+                    <span class="label">Model</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Chat Section -->
+        <section id="chat-section" class="content-section active">
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>
+                            <i class="fas fa-user-md gradient-icon"></i>
+                            Medical AI Assistant
+                        </h1>
+                        <p>Intelligent healthcare insights powered by comprehensive medical datasets</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="live-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" id="live-records">3,001</span>
+                                    <span class="stat-label">Medical Records</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" id="live-diseases">1</span>
+                                    <span class="stat-label">Disease Modules</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Disease Selector -->
+                <div class="disease-selector-container">
+                    <label for="disease-filter">
+                        <i class="fas fa-filter"></i>
+                        Focus Disease Analysis
+                    </label>
+                    <select id="disease-filter" class="disease-select">
+                        <option value="">All Medical Conditions</option>
+                    </select>
+                </div>
+            </header>
+
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Welcome Message -->
+                    <div class="message-container bot-message welcome-message">
+                        <div class="message-avatar">
+                            <div class="avatar-bg">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="online-indicator"></div>
+                        </div>
+                        <div class="message-bubble">
+                            <div class="message-header">
+                                <span class="sender-name">Medical AI Assistant</span>
+                                <span class="message-time">Just now</span>
+                                <div class="message-status">
+                                    <i class="fas fa-check-double"></i>
+                                </div>
+                            </div>
+                            <div class="message-content">
+                                <div class="welcome-content">
+                                    <h3>
+                                        <i class="fas fa-hand-paper wave-animation"></i>
+                                        Welcome to Advanced Medical AI
+                                    </h3>
+                                    <p>I'm your intelligent medical assistant, trained on comprehensive healthcare datasets. I can help you with:</p>
+                                    
+                                    <div class="feature-grid">
+                                        <div class="feature-card">
+                                            <i class="fas fa-stethoscope"></i>
+                                            <h4>Symptom Analysis</h4>
+                                            <p>Analyze symptoms and risk factors based on medical data</p>
+                                        </div>
+                                        <div class="feature-card">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <h4>Dataset Insights</h4>
+                                            <p>Statistical analysis of medical patterns and trends</p>
+                                        </div>
+                                        <div class="feature-card">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <h4>Evidence-Based</h4>
+                                            <p>Information derived from verified medical datasets</p>
+                                        </div>
+                                        <div class="feature-card">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <h4>Health Insights</h4>
+                                            <p>Actionable healthcare recommendations and guidance</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="quick-start">
+                                        <h4>Quick Start Questions:</h4>
+                                        <div class="quick-questions">
+                                            <button class="quick-question-btn" data-question="What are the most common lung cancer symptoms in your dataset?">
+                                                <i class="fas fa-lungs"></i>
+                                                Lung Cancer Symptoms
+                                            </button>
+                                            <button class="quick-question-btn" data-question="How does smoking affect cancer risk according to your data?">
+                                                <i class="fas fa-smoking-ban"></i>
+                                                Smoking Risk Analysis
+                                            </button>
+                                            <button class="quick-question-btn" data-question="Show me comprehensive dataset statistics">
+                                                <i class="fas fa-chart-pie"></i>
+                                                Dataset Statistics
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="medical-disclaimer">
+                                        <div class="disclaimer-icon">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="disclaimer-content">
+                                            <strong>Medical Disclaimer:</strong> This AI assistant provides educational information only. Always consult qualified healthcare professionals for medical advice, diagnosis, or treatment decisions.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Area -->
+                <div class="chat-input-area">
+                    <div class="input-suggestions" id="input-suggestions"></div>
+                    <div class="chat-input-container">
+                        <div class="input-wrapper">
+                            <button class="input-action-btn" id="attachment-btn" title="Quick Actions">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="input-field-container">
+                                <textarea 
+                                    id="user-input" 
+                                    placeholder="Ask about medical conditions, symptoms, or dataset insights..."
+                                    rows="1"
+                                ></textarea>
+                                <div class="input-counter">
+                                    <span id="char-count">0</span>/500
+                                </div>
+                            </div>
+                            <button class="send-btn" id="send-btn" title="Send Message">
+                                <div class="send-icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <div class="loading-spinner">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="input-actions">
+                            <button class="action-btn" title="Voice Input">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="action-btn" title="Upload Medical Report">
+                                <i class="fas fa-file-medical"></i>
+                            </button>
+                            <button class="action-btn" title="Clear Chat">
+                                <i class="fas fa-broom"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics-section" class="content-section">
+            <div class="section-header">
+                <h2>
+                    <i class="fas fa-chart-line"></i>
+                    Medical Data Analytics
+                </h2>
+                <p>Comprehensive insights from medical datasets</p>
+            </div>
+            
+            <div class="analytics-grid">
+                <div class="analytics-card overview-card">
+                    <div class="card-header">
+                        <h3>Dataset Overview</h3>
+                        <div class="card-actions">
+                            <button class="card-action-btn">
+                                <i class="fas fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content" id="overview-analytics">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <div class="analytics-card chart-card">
+                    <div class="card-header">
+                        <h3>Disease Distribution</h3>
+                    </div>
+                    <div class="card-content" id="disease-chart">
+                        <!-- Chart placeholder -->
+                    </div>
+                </div>
+
+                <div class="analytics-card chart-card">
+                    <div class="card-header">
+                        <h3>Symptom Prevalence</h3>
+                    </div>
+                    <div class="card-content" id="symptom-chart">
+                        <!-- Chart placeholder -->
+                    </div>
+                </div>
+
+                <div class="analytics-card chart-card">
+                    <div class="card-header">
+                        <h3>Risk Factor Analysis</h3>
+                    </div>
+                    <div class="card-content" id="risk-chart">
+                        <!-- Chart placeholder -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diseases Section -->
+        <section id="diseases-section" class="content-section">
+            <div class="section-header">
+                <h2>
+                    <i class="fas fa-virus"></i>
+                    Disease Modules
+                </h2>
+                <p>Available medical condition analyzers</p>
+            </div>
+            <div class="diseases-grid" id="diseases-grid">
+                <!-- Dynamic content -->
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section id="insights-section" class="content-section">
+            <div class="section-header">
+                <h2>
+                    <i class="fas fa-brain"></i>
+                    Medical Insights
+                </h2>
+                <p>AI-generated healthcare insights and patterns</p>
+            </div>
+            <div class="insights-container">
+                <!-- Insights content -->
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading-overlay">
+    <div class="loading-content">
+        <div class="medical-loader">
+            <div class="dna-strand">
+                <div class="dna-segment"></div>
+                <div class="dna-segment"></div>
+                <div class="dna-segment"></div>
+                <div class="dna-segment"></div>
+            </div>
+        </div>
+        <h3>Analyzing Medical Data...</h3>
+        <p>Processing your healthcare query</p>
+    </div>
+</div>
+
+<!-- Notification System -->
+<div class="notification-container" id="notification-container"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ui-enhancements.js') }}"></script>
+{% endblock %}
